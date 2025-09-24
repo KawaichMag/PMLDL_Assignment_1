@@ -116,7 +116,7 @@ def main():
 
     dataset.to_csv("data/preprocessed_dataset.csv")
 
-    print(dataset.iloc[0:8, :])
+    print(dataset.iloc[0:11, :])
 
     X_train = dataset.iloc[:, 1:9].values
     Y_train = dataset.iloc[:, 0].values
@@ -143,7 +143,7 @@ def main():
     X_train = column_transformer.fit_transform(X_train)
     X_test = column_transformer.transform(X_test)
 
-    print(X_train[:8, :])
+    print(X_train[:11, :])
 
     # Ensure dense float arrays (handle sparse outputs)
     if hasattr(X_train, "toarray"):

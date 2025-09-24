@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  api:
+    build:
+      context: ./api
+    container_name: titanic-api
+    command: uv run uvicorn main:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+  app:
+    build:
+      context: ./app
+    container_name: titanic-app
+    depends_on:
+      - api
+    environment:
+      - API_BASE_URL=http://api:8000
+    command: streamlit run main.py --server.address 0.0.0.0 --server.port 8501
+    ports:
+      - "8501:8501"
+    restart: unless-stopped
+
+
