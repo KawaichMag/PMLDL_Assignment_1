@@ -8,3 +8,11 @@ dependencies = [
     "numpy>=2.3.3",
     "torch==2.6.0",
 ]
+
+[tool.uv.sources]
+    torch = [ { index = "pytorch-cpu" }, ]
+    torchvision = [ { index = "pytorch-cpu" }, ]
+
+    [[tool.uv.index]]
+    name = "pytorch-cpu"
+    url = "https://download.pytorch.org/whl/cpu"
